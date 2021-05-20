@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Mi Agenda</title>
+	<link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+</head>
+<body>
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Teléfono</th>
+		</tr>
+		<tr th:each="contacto : ${lista}">
+			<td th:text="${contacto.id}"></td>
+			<td th:text="${contacto.nombre}"></td>
+			<td th:text="${contacto.apellidos}"></td>
+			<td th:text="${contacto.telefono}"></td>
+			<!-- <td><input type="checkbox" name="${contacto.id}"/></td>	-->
+			<!-- <td><a th:href="@{/del/${contact.id}">borrar contacto</a></td> -->
+			<td><a th:href="@{/del/{id}(id=${contacto.id})}">borrar</a></td>
+			<td><a th:href="@{/actualizar/{id}(id=${contacto.id})}">actualizar</a></td>
+			
+		</tr>
+	</table>
+	<p><a th:href="@{/new}">Añadir contacto</a></p>
+</body>
+</html>

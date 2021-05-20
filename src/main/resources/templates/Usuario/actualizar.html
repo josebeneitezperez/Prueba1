@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<table class="table table-striped">
+		<tr>
+			<th>Id</th>
+			<th>Nombre</th>
+			<th>Apellidos</th>
+			<th>Teléfono</th>
+		</tr>
+		<tr>
+			<td th:text="${contacto.id}"></td>
+			<td th:text="${contacto.nombre}"></td>
+			<td th:text="${contacto.apellidos}"></td>
+			<td th:text="${contacto.telefono}"></td>
+		</tr>
+	</table>
+	
+	<form th:action="@{/actualizar/confirmar}" th:object="${contacto}" method="post" >
+	
+		<!-- HIDDEN. PROBANDO: si el usuario no rellena algún campo, los mantiene igual-->
+		<input id="id" th:field="*{id}" type="hidden">
+		<input id="nombre" th:field="*{nombre}" type="hidden">
+		<input id="apellidos" th:field="*{apellidos}" type="hidden">
+		<input id="telefono" th:field="*{telefono}" type="hidden">
+		<!-- FIN HIDDEN PRUEBA -->
+	
+	
+		<input id="nombre" th:field="*{nombre}" type="text" class="form-control input-md">
+		<input id="apellidos" th:field="*{apellidos}" type="text" class="form-control input-md">
+		<input id="telefono" th:field="*{telefono}" type="text" class="form-control input-md">
+				
+		<!-- HIDDEN (fijar el id a actualizar en el objeto que devolveremos)-->
+		<input id="id" th:field="*{id}" type="hidden">
+  		
+  		<button type="submit" class="btn btn-primary">
+        	<i class="fa fa-user-md"></i> Actualizar</button>
+        <!-- <input type="submit"  class="btn btn-primary" value="Registrarse" /> -->
+		
+  
+  </form>
+</body>
+</html>
